@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Russo One', sans-serif;
+  }
+ 
+  canvas {
+    display:block;
+  }
+  
+  .content{
+    
+    color:#fff;
+    font-weight: bold;
+  }
+  p{
+    position: absolute;
+    left:700px;
+    top: 40px;
+    color: lime; 
+    font-size: 20px;
+    margin: 10px 0 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 30em;
+    animation: type 4s steps(60, end); 
+    border: 1px solid;
+    text-align: center;
+    font-style: italic;
+    
+  }
+  
+  p:nth-child(2){
+    animation: type2 8s steps(60, end);
+  }
+  
+  p a{
+    color: lime;
+    text-decoration: none;
+  }
+  
+  span{
+    animation: blink 1s infinite;
+  }
+  
+  @keyframes type{ 
+    from { width: 0; } 
+  } 
+  
+  @keyframes type2{
+    0%{width: 0;}
+    50%{width: 0;}
+    100%{ width: 100; } 
+  } 
+  
+  @keyframes blink{
+    to{opacity: .0;}
+  }
+  
+  ::selection{
+    background: black;
+  }
+
+
+  .title{
+    text-shadow: 0 4px 50px rgb(73, 103, 236);
+  }
+
+
+  .title1{
+      position: absolute;
+      font-size: 150px;
+      left:700px;
+      top:-10px;
+      
+          
+  }
+
+  .title2{
+    position: absolute;
+    font-size: 150px;
+    left:900px;
+    top: 200px;
+   
+        
+}
+
+.title3{
+  position: absolute;
+  font-size: 150px;
+  left:500px;
+  top: 400px;
+        
+}
+
+.start{
+  position:absolute;
+  font-size: 50px;
+  text-decoration: none;
+  color:white;
+  left:900px;
+  top:800px;
+  border: 2px solid #fff;
+  padding:20px;
+  border-radius: 30px;
+}
+  
