@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sansita:ital,wght@1,700&display=swap');
 html, body {
     margin: 0;
     padding: 0;
@@ -9,14 +10,14 @@ html, body {
     display:block;
   }
   
-  .content{
-    
+  #content{ 
     color:#fff;
     font-weight: bold;
   }
-  p{
+
+  #type{
     position: absolute;
-    left:700px;
+    left:600px;
     top: 40px;
     color: lime; 
     font-size: 20px;
@@ -28,14 +29,13 @@ html, body {
     border: 1px solid;
     text-align: center;
     font-style: italic;
-    
   }
   
-  p:nth-child(2){
+  #type:nth-child(2){
     animation: type2 8s steps(60, end);
   }
   
-  p a{
+  #type a{
     color: lime;
     text-decoration: none;
   }
@@ -63,46 +63,87 @@ html, body {
   }
 
 
-  .title{
-    text-shadow: 0 4px 50px rgb(73, 103, 236);
-  }
+ 
 
-
-  .title1{
+  #title1{
       position: absolute;
-      font-size: 150px;
-      left:700px;
-      top:-10px;
-      
-          
+      font-size: 90px;
+      left:750px;
+      top:60px;
+      animation-name: slide-right ;
+      animation-duration: 5s;       
   }
 
-  .title2{
+@keyframes slide-right {
+  0% { left:-1000px; top: 60px;}
+  100% { left:750px; top: 60px;}
+}
+
+  #title2{
     position: absolute;
-    font-size: 150px;
-    left:900px;
-    top: 200px;
-   
-        
+    font-size: 90px;
+    right: 940px;
+    top: 250px;
+    animation-name: slide-bottom ;
+    animation-duration: 4s;      
 }
 
-.title3{
+@keyframes slide-bottom {
+  0% {right: -500px; top: 250px;}
+  100% { right: 940px; top: 250px;}
+}
+
+#title3{
   position: absolute;
-  font-size: 150px;
-  left:500px;
+  font-size: 100px;
+  left:600px;
   top: 400px;
-        
+  animation-name: slide-top ;
+  animation-duration: 3s;       
 }
 
-.start{
+@keyframes slide-top {
+  0% { left: 600px; top: -1500px;}
+  100% { left: 600px; top: 400px;}
+}
+
+#start{
   position:absolute;
-  font-size: 50px;
+  font-size: 30px;
   text-decoration: none;
   color:white;
-  left:900px;
+  left:850px;
   top:800px;
   border: 2px solid #fff;
   padding:20px;
-  border-radius: 30px;
+  border-radius: 0 40px;
 }
-  
+
+.title4{
+  position: absolute;
+  font-size: 100px;
+  left:700px;
+  top: 50px;
+  /* animation-name: slide-top ;
+  animation-duration: 3s;        */
+}
+
+.title5{
+  position: absolute;
+  font-size: 50px;
+  left:770px;
+  top: 230px;
+  /* animation-name: slide-top ;
+  animation-duration: 3s;        */
+}
+
+.click{
+  position:absolute;
+  font-size: 40px;
+  font-family: 'Sansita', sans-serif;
+  text-decoration: none;
+  font-style: italic;
+  color:white;
+  left:1400px;
+  top:850px;
+}
