@@ -24,7 +24,7 @@ class Star {
     var sx = map(this.x / this.z, 0, 1, 1, width);
     var sy = map(this.y / this.z, 0, 1, 1, height);
 
-    var r = map(this.z, 0, width, random(0.5, 8), 1);
+    var r = map(this.z, 0, width, random(0.5, 10), 1);
     ellipse(sx, sy, r, r);
 
     var px = map(this.x * this.pz, 100, 0, 20, width);

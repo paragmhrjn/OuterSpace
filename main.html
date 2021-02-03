@@ -6,18 +6,35 @@
     <title>Outerspace</title>
     <link rel="stylesheet" href="style.css">
     <script src="./js/p5.min.js"></script>
+    
 </head>
 <body>
-    
-    
-    <div id="content">
+    <div id="load">  
     </div>
     
+    <div class="main">
+        <div id="content"></div>
+        <div id="canvas"></div>
+    </div>
+   
     <script src="./js/index.js"></script>
     <script src="./js/gradients.js"></script>
     <script src="./js/planet.js"></script>
     <script src="./js/star.js"></script>
     <script src="./js/astronaut.js"></script>
+
+    <script>
+    document.querySelector('.main').style.display='none';
+    document.getElementById('load').classList.add('loader');
+    
+    setTimeout(() => {
+      document.getElementById('load').classList.remove('loader');
+      document.querySelector('.type').style.display='none';
+      document.querySelector('.main').style.display='block';
+    
+    }, 6000)
+
+    </script>
     <!-- <script src="./js/sound.js"></script> -->
 </body>
 </html>

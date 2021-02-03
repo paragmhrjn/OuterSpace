@@ -9,10 +9,16 @@ var speed;
 var heading;
 var link;
 
+
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    var canvas =  createCanvas(windowWidth, windowHeight);
+    canvas.parent('canvas');
     noiseDetail(4);
     gradient();
+  
+    paragraph = createP("New journey Begin!!! Please Wait...");
+    paragraph.class('type');
+    paragraph.parent('load');
 
     heading = createElement('h3', 'Chapter 1');
     heading.class('title4');
@@ -24,11 +30,15 @@ function setup() {
     heading.parent('content');
     heading.style('text-shadow', '0 4px 50px rgb(73, 103, 236)');
 
+    link =createA("./main.html", '<< Back', '_self');
+    link.class('back');
+    link.parent('content');
     
-    link =createA("#", 'The Journey Begin... >>', '_self');
+    
+    link =createA("./chapter1.1.html", 'The Journey Begin... >>', '_self');
     link.class('click');
     link.parent('content');
-    link.style('text-shadow', '0 4px 50px rgb(73, 103, 236)');
+    
      
     for (var i = 0; i < 3000; i++) {
 		stars[i] = new Star();
@@ -46,10 +56,10 @@ function setup() {
 function draw() {
     //Background
     background(0);
-    setGradient(0 , 0 , width , height , bl, p,  Y_AXIS);
+    setGradient(0 , 0 , width , height , p, bl,  Y_AXIS);
     
     wave();
-
+    
     //assigned color to stars
     speed = random(5);
     fill(255,255,255);

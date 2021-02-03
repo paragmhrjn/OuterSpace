@@ -11,24 +11,20 @@
 
     <div id="load">  
     </div>
-    <div class="chapter1">
+    <div class="chapter1a">
         <div id="content">
         </div>
         <div id="canvas"></div>
     </div>
-    
-    <script src="./js/chapter1.js"></script>
-    <script src="./js/gradients.js"></script>
-    <script src="./js/planet.js"></script>
-    <script src="./js/star.js"></script>
+    <script src="./js/chapter1.1.js"></script>
     <script>
-        document.querySelector('.chapter1').style.display='none';
+        document.querySelector('.chapter1a').style.display='none';
         document.getElementById('load').classList.add('loader');
         
         setTimeout(() => {
           document.getElementById('load').classList.remove('loader');
           document.querySelector('.type').style.display='none';
-          document.querySelector('.chapter1').style.display='block';
+          document.querySelector('.chapter1a').style.display='block';
         
         }, 7000)
     

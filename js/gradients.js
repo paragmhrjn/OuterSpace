@@ -1,24 +1,24 @@
 function gradient(){
    //Define Colors
    p = color(10,27,100);
-   b = color(65,147,204);
-   bl = color(10,5,5);
+   b = color(16,47,204);
+   bl = color(94,0,23);
   
  }
  
  function wave() {
   noStroke();
-  fill(104,120,7);
-	var zoff=frameCount*0.015;
+  fill(10,20,45);
+	var zoff=frameCount*0.045;
 	var yoff=1;
-	for(var y=0;y<height+20;y+=5){
+	for(var y=0;y<height+20;y+=4){
 		var xoff=0;
 		beginShape();
-		for(var x=0;x<width+10;x+=5){
+		for(var x=0;x<width+10;x+=3){
 			var n=noise(xoff,yoff,zoff);
 			var wave=map(n,0,1,-10,5);
 			curveVertex(x,y+wave);
-			//ellipse(x,y+wave,30);
+			line(x,y+wave,30);
 		
 			xoff+=0.004;
 		}

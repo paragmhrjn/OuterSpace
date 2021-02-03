@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sansita:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 html, body {
     margin: 0;
     padding: 0;
-    font-family: 'Russo One', sans-serif;
+    /* font-family: 'Russo One', sans-serif; */
+    font-family: 'Orbitron', sans-serif;
   }
  
   canvas {
@@ -15,48 +18,29 @@ html, body {
     font-weight: bold;
   }
 
-  #type{
+  .type{
     position: absolute;
     left:600px;
-    top: 40px;
+    top: 300px;
     color: lime; 
-    font-size: 20px;
-    margin: 10px 0 0 10px;
+    font-size: 25px;
+    padding: 10px;
     white-space: nowrap;
     overflow: hidden;
     width: 30em;
-    animation: type 4s steps(60, end); 
-    border: 1px solid;
+    animation: type 3s steps(60, end); 
     text-align: center;
-    font-style: italic;
+    font-style:oblique;
+    
   }
   
-  #type:nth-child(2){
-    animation: type2 8s steps(60, end);
-  }
-  
-  #type a{
-    color: lime;
-    text-decoration: none;
-  }
-  
-  span{
-    animation: blink 1s infinite;
-  }
   
   @keyframes type{ 
     from { width: 0; } 
   } 
   
-  @keyframes type2{
-    0%{width: 0;}
-    50%{width: 0;}
-    100%{ width: 100; } 
-  } 
-  
-  @keyframes blink{
-    to{opacity: .0;}
-  }
+ 
+
   
   ::selection{
     background: black;
@@ -67,56 +51,37 @@ html, body {
 
   #title1{
       position: absolute;
-      font-size: 90px;
-      left:750px;
-      top:60px;
+      font-size: 80px;
+      left:300px;
+      top:250px;
       animation-name: slide-right ;
-      animation-duration: 5s;       
+      animation-duration: 5s; 
+      text-transform: uppercase;   
   }
 
 @keyframes slide-right {
-  0% { left:-1000px; top: 60px;}
-  100% { left:750px; top: 60px;}
-}
-
-  #title2{
-    position: absolute;
-    font-size: 90px;
-    right: 940px;
-    top: 250px;
-    animation-name: slide-bottom ;
-    animation-duration: 4s;      
-}
-
-@keyframes slide-bottom {
-  0% {right: -500px; top: 250px;}
-  100% { right: 940px; top: 250px;}
-}
-
-#title3{
-  position: absolute;
-  font-size: 100px;
-  left:600px;
-  top: 400px;
-  animation-name: slide-top ;
-  animation-duration: 3s;       
-}
-
-@keyframes slide-top {
-  0% { left: 600px; top: -1500px;}
-  100% { left: 600px; top: 400px;}
+  0% { left:-1000px; top: 250px;}
+  100% { left:300px; top: 250px;}
 }
 
 #start{
   position:absolute;
   font-size: 30px;
   text-decoration: none;
-  color:white;
-  left:850px;
+  color: #fff;
+  left:870px;
   top:800px;
-  border: 2px solid #fff;
-  padding:20px;
+  border: 2px solid #00d7c3;
+  padding:10px 30px;
   border-radius: 0 40px;
+  -webkit-transition: all .15s ease-in-out;
+  transition: all .15s ease-in-out;
+  text-transform: uppercase;
+}
+#start:hover, .click:hover, .back:hover {
+  box-shadow: 0 0 20px 0 #00d7c3 inset, 0 0 20px 7px #00d7c3;
+  border: 3px solid #00d7c3;
+  color:chartreuse;
 }
 
 .title4{
@@ -139,11 +104,93 @@ html, body {
 
 .click{
   position:absolute;
-  font-size: 40px;
-  font-family: 'Sansita', sans-serif;
+  font-size: 20px;
   text-decoration: none;
   font-style: italic;
   color:white;
-  left:1400px;
+  left:1450px;
   top:850px;
+  -webkit-transition: all .15s ease-in-out;
+  transition: all .15s ease-in-out;
+  border: 2px solid #00d7c3;
+  border-radius: 0 40px;
+  padding:10px 30px;
 }
+.back{
+  position:absolute;
+  font-size: 20px;
+  text-decoration: none;
+  font-style: italic;
+  color:white;
+  left:50px;
+  top:40px;
+  -webkit-transition: all .15s ease-in-out;
+  transition: all .15s ease-in-out;
+  border: 2px solid #00d7c3;
+  border-radius: 0 40px;
+  padding:10px 20px;
+}
+
+
+.loader{
+  background: -webkit-radial-gradient(circle, rgba(17,6,41,1) 0%, rgba(8,16,88,1) 50%, rgba(28,1,41,1) 83%); 
+    background: -moz-linear-gradient(125deg, rgba(0,0,0,1) 0%, rgba(8,18,107,1) 37%, rgba(28,1,41,1) 80%); 
+    background: radial-gradient(circle, rgba(17,6,41,1) 0%, rgba(8,16,88,1) 50%, rgba(28,1,41,1) 83%);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    display:flex;
+}
+
+.loader::before, .loader::after{
+  content:"";
+  width: 8em;
+  height:0.5em;
+  position: absolute;
+  border-radius:4em;
+  
+}
+
+.loader::before{
+  background: rgb(157, 60, 22);
+  transform: translateX(200px);
+  top:450px;
+  left:500px;
+  animation: moveleft 2s ease infinite;
+}
+
+.loader::after{
+  background:rgb(21, 143, 21);
+  top:430px;
+  right:500px;
+  transform: translateX(-200px);
+  animation: moveright 2s ease infinite;
+}
+
+@keyframes moveright{
+  0%{
+    transform: translateX(-700px);
+  }
+  50%{
+    transform: translateX(200px);
+    background:rgba(50, 205, 50, 0.535);
+  }
+  100%{
+    transform: translateX(-700px);
+  }
+}
+
+@keyframes moveleft{
+  0%{
+    transform: translateX(700px);
+  }
+  50%{
+    transform: translateX(-200px);
+    background: rgba(157, 60, 22, 0.481);
+  }
+  100%{
+    transform: translateX(700px);
+  }
+}
+

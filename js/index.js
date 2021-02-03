@@ -11,28 +11,19 @@ var link;
 var heading;
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
-    noiseDetail(4);
+    var canvas = createCanvas(windowWidth, windowHeight);
+    canvas.parent('canvas');
+    noiseDetail(2);
     gradient();
     
     paragraph = createP("Welcome to a New Journey to Outer Space !!!");
-    paragraph.id('type');
-    paragraph.parent('content');
+    paragraph.class('type');
+    paragraph.parent('load');
 
-    heading = createElement('h3', 'Journey');
+    heading = createElement('h3', 'Journey To Outer Space');
     heading.id('title1');
     heading.parent('content');
-    heading.style('text-shadow', '0 4px 50px rgb(73, 103, 236)');
-
-    heading = createElement('h3', 'To');
-    heading.id('title2');
-    heading.parent('content');
-    heading.style('text-shadow', '0 4px 50px rgb(73, 103, 236)');
-
-    heading = createElement('h3', 'Outer Space');
-    heading.id('title3');
-    heading.parent('content');
-    heading.style('text-shadow', '0 4px 50px rgb(73, 103, 236)');
+    heading.style('text-shadow', '0 10px 50px rgb(150, 103, 236)');
 
     link =createA("./chapter1.html", 'Start', '_self');
     link.id('start');
@@ -50,8 +41,8 @@ function setup() {
   let purplep_color = color(142,60,214);
 
   greenP = new planet(20, 20, 500, 500, greenP_color);
-  redP = new planet (780,400, 80, 80, redp_color);
-  blueP = new planet (100, 900, 900, 900, bluep_color);
+  redP = new planet (200,700, 150, 150, redp_color);
+  blueP = new planet (940, 150, 900, 900, bluep_color);
   orangeP = new planet (1900, 200, 200, 200, orangep_color);
   purpleP = new planet (1700, 500, 150, 150, purplep_color);
   planets = [greenP, redP, blueP, orangeP, purpleP];
@@ -61,7 +52,7 @@ function setup() {
   function draw() {
     //Background
     background(0);
-    setGradient(0 , 0 , width , height , bl, p,  Y_AXIS);
+    setGradient(0 , 0 , width , height , bl, b,  Y_AXIS);
    
     wave();
 
