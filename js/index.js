@@ -11,21 +11,21 @@ var link;
 var heading;
 
 
-var triOsc;
+var sinOcr;
 var env;
 var a;
 
 // Times and levels for the ASR envelope
-var attackTime = 0.001;
-var attackLevel = 0.9;
-var decayTime = 0.3;
+var attackTime = 0.1;
+var attackLevel = 0.09;
+var decayTime = 0.03;
 var susPercent = 0.1;
-var sustainTime = 0.5;
-var releaseTime = 0.5;
-var releaseLevel = 0;
+var sustainTime = 1;
+var releaseTime = 0.05;
+var releaseLevel = 0.01;
 
-var midiSequence = [  70,90,95,100,200,110,115,120,125,75,80,85,50 ]; 
-var duration = 1000;
+var midiSequence = [261.63, 174.61, 349.23, 233.08, 196.56, 311.13, 130.81, 261.63, 174.61, 349.23, 233.08, 196.56, 311.13, 130.81, 261.63, 174.61, 349.23, 233.08, 196.56, 311.13, 130.81]; 
+var duration = 200;
 // Set the note trigger
 var trigger;
 
@@ -34,7 +34,7 @@ var note = 0;
 function setup() {
     var canvas = createCanvas(windowWidth, windowHeight);
     canvas.parent('canvas');
-    noiseDetail(2);
+    noiseDetail(4);
     gradient();
     
     paragraph = createP("Welcome to a New Journey to Outer Space !!!");
@@ -45,11 +45,13 @@ function setup() {
     heading.id('title1');
     heading.parent('content');
     heading.style('text-shadow', '0 10px 50px rgb(150, 103, 236)');
-
     link =createA("./chapter1.html", 'Start', '_self');
     link.id('start');
     link.parent('content');
     link.style('text-shadow', '0 4px 50px rgb(73, 103, 236)');
+    
+
+    
 
     for (var i = 0; i < 3000; i++) {
 		stars[i] = new Star();
@@ -61,7 +63,7 @@ function setup() {
   let orangep_color = color(172,111,42);
   let purplep_color = color(142,60,214);
 
-  greenP = new planet(20, 20, 500, 500, greenP_color,20);
+  greenP = new planet(20, 20, 500, 500, greenP_color);
   redP = new planet (200,700, 150, 150, redp_color);
   blueP = new planet (940, 150, 900, 900, bluep_color);
   orangeP = new planet (1900, 200, 200, 200, orangep_color);
@@ -72,9 +74,10 @@ function setup() {
 
   trigger = millis();
 
-  triOsc = new p5.SinOsc();
-  triOsc.amp();
-  triOsc.start();
+  sinOcr = new p5.SinOsc();
+  sinOcr.amp();
+  sinOcr.start(2);
+  
 
   env = new p5.Envelope();
   env.setADSR(attackTime, decayTime, susPercent, releaseTime);
@@ -113,11 +116,11 @@ function setup() {
   // sequence of notes hasn't been finished yet the next note gets played.
   if ((millis() > trigger)){
     // midiToFreq transforms the MIDI value into a frequency in Hz which we use to control the triangle oscillator
-    triOsc.freq(midiToFreq(midiSequence[note]));
+    sinOcr.freq(midiToFreq(midiSequence[note]));
 
     // The envelope gets triggered with the oscillator as input and the times and levels we defined earlier
     // play accepts an object to play, time from now, and a sustain time—how long to hold before the release.
-    env.play(triOsc, 1, sustainTime);
+    env.play(sinOcr, 0, sustainTime);
 
     // Create the new trigger according to predefined durations and speed it up by deviding by 1.5
     trigger = millis() + duration;

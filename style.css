@@ -34,6 +34,20 @@ html, body {
     
   }
   
+  .continue{
+    position: absolute;
+    left:200px;
+    top: 400px;
+    color: lime; 
+    font-size: 40px;
+    padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 40em;
+    animation: type 3s steps(60, end); 
+    text-align: center;
+    font-style:oblique;
+  }
   
   @keyframes type{ 
     from { width: 0; } 

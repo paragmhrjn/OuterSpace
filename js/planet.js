@@ -88,7 +88,7 @@ class planet {
         ellipse(0, 0, this.width, this.height);
         this.move = this.a++;
         if(this.move > this.height){
-            this.move=this.b--;
+            this.b--;
         }
         pop()
     }
