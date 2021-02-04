@@ -10,6 +10,27 @@ var paragraph;
 var link;
 var heading;
 
+
+var triOsc;
+var env;
+var a;
+
+// Times and levels for the ASR envelope
+var attackTime = 0.001;
+var attackLevel = 0.9;
+var decayTime = 0.3;
+var susPercent = 0.1;
+var sustainTime = 0.5;
+var releaseTime = 0.5;
+var releaseLevel = 0;
+
+var midiSequence = [  70,90,95,100,200,110,115,120,125,75,80,85,50 ]; 
+var duration = 1000;
+// Set the note trigger
+var trigger;
+
+// An index to count up the notes
+var note = 0;
 function setup() {
     var canvas = createCanvas(windowWidth, windowHeight);
     canvas.parent('canvas');
@@ -40,13 +61,26 @@ function setup() {
   let orangep_color = color(172,111,42);
   let purplep_color = color(142,60,214);
 
-  greenP = new planet(20, 20, 500, 500, greenP_color);
+  greenP = new planet(20, 20, 500, 500, greenP_color,20);
   redP = new planet (200,700, 150, 150, redp_color);
   blueP = new planet (940, 150, 900, 900, bluep_color);
   orangeP = new planet (1900, 200, 200, 200, orangep_color);
   purpleP = new planet (1700, 500, 150, 150, purplep_color);
   planets = [greenP, redP, blueP, orangeP, purpleP];
 
+
+
+  trigger = millis();
+
+  triOsc = new p5.SinOsc();
+  triOsc.amp();
+  triOsc.start();
+
+  env = new p5.Envelope();
+  env.setADSR(attackTime, decayTime, susPercent, releaseTime);
+  env.setRange(attackLevel, releaseLevel);
+
+  a = new p5.Amplitude();
   }
   
   function draw() {
@@ -71,6 +105,27 @@ function setup() {
   
     
     astronaut();
+
+    var size = 10;
+  background(20, 20, 20, 70);
+ 
+  // If the determined trigger moment in time matches up with the computer clock and we if the 
+  // sequence of notes hasn't been finished yet the next note gets played.
+  if ((millis() > trigger)){
+    // midiToFreq transforms the MIDI value into a frequency in Hz which we use to control the triangle oscillator
+    triOsc.freq(midiToFreq(midiSequence[note]));
+
+    // The envelope gets triggered with the oscillator as input and the times and levels we defined earlier
+    // play accepts an object to play, time from now, and a sustain time—how long to hold before the release.
+    env.play(triOsc, 1, sustainTime);
+
+    // Create the new trigger according to predefined durations and speed it up by deviding by 1.5
+    trigger = millis() + duration;
+    
+    
+
+   
+  }
    
     
   }

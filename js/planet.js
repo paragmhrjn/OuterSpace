@@ -71,12 +71,14 @@
 
 
 class planet {
-    constructor( xaxis, yaxis, width, height, color){
+    constructor( xaxis, yaxis, width, height, color, move){
         this.a = xaxis;
         this.b = yaxis;
         this.width = width;
         this.height = height;
         this.color = color;
+        this.move = move;
+        
     }
 
     show(){
@@ -84,6 +86,10 @@ class planet {
         fill(this.color);
         translate(this.a, this.b)
         ellipse(0, 0, this.width, this.height);
+        this.move = this.a++;
+        if(this.move > this.height){
+            this.move=this.b--;
+        }
         pop()
     }
 }
