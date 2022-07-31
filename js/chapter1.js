@@ -33,7 +33,7 @@ function setup() {
     synth = new p5.MonoSynth();
 
 
-    link =createA("./main.html", '<< Back', '_self');
+    link =createA("./index.html", '<< Back', '_self');
     link.class('back');
     link.parent('content');
     link.mousePressed(playSynth);
